@@ -3,37 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Field Guide Theory: Study Workbook</title>
+<meta name="description" content="Field Guide Theory study workbook for NQF2 Nature Site Guide preparation. 20 lessons covering ecology, botany, birds, mammals, tracking, and conservation.">
+<title>Field Guide Theory — Study Workbook</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap');
-
-/* =====================================================
-   TYPE SCALE — one serif (Lora) for titles only,
-   one sans (Source Sans 3) for all body text.
-   Clear size steps: 11 / 13 / 15 / 17 / 24 / 32px
-   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   --paper:     #F6F2EB;
   --paper-2:   #EDE8DF;
-  --paper-3:   #E5DDD0;
+  --paper-3:   #E0D8CB;
   --ink:       #1C1811;
   --ink-2:     #3D3727;
   --ink-3:     #6A6050;
   --ochre:     #8A5C18;
-  --sage:      #49604A;
+  --ochre-dim: rgba(138,92,24,0.35);
+  --sage:      #3E5540;
   --rust:      #7C3321;
-  --line:      rgba(28,24,17,0.09);
-  --line-2:    rgba(28,24,17,0.16);
-  --sidebar-w: 252px;
+  --line:      rgba(28,24,17,0.08);
+  --line-2:    rgba(28,24,17,0.15);
+  --sidebar-w: 256px;
+  --radius:    3px;
 
-  /* type scale */
-  --t-xs:   0.6875rem;   /* 11px — labels, eyebrows */
-  --t-sm:   0.8125rem;   /* 13px — nav, captions, metadata */
-  --t-base: 0.9375rem;   /* 15px — body, options, detail text */
-  --t-md:   1.0625rem;   /* 17px — purpose, questions */
-  --t-lg:   1.5rem;      /* 24px — section headings */
-  --t-xl:   2rem;        /* 32px — lesson title */
+  --t-xs:   0.6875rem;
+  --t-sm:   0.8125rem;
+  --t-base: 0.9375rem;
+  --t-md:   1.0625rem;
+  --t-lg:   1.5rem;
+  --t-xl:   2rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,14 +39,21 @@ html { font-size: 16px; scroll-behavior: smooth; }
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: var(--t-base);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  /* prevent iOS dark mode inverting the paper background */
   color-scheme: light only;
 }
+
+/* Global focus ring — keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--ochre);
+  outline-offset: 2px;
+}
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) { outline: none; }
 
 /* ===== SIDEBAR ===== */
 
@@ -75,10 +78,10 @@ body {
 }
 
 .sidebar-title {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: var(--t-sm);
   font-weight: 600;
-  color: rgba(246,242,235,0.9);
+  color: rgba(246,242,235,0.92);
   line-height: 1.4;
   letter-spacing: 0.01em;
   margin-bottom: 0.2rem;
@@ -137,10 +140,11 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 0.55rem;
-  padding: 0.45rem 1.5rem;
+  padding: 0.55rem 1.5rem;
   cursor: pointer;
   transition: background 0.12s;
   border-left: 2px solid transparent;
+  min-height: 44px;
 }
 
 .nav-item:hover { background: rgba(255,255,255,0.035); }
@@ -203,15 +207,6 @@ body {
 
 /* ===== LESSON HEADER ===== */
 
-.lesson-eyebrow {
-  font-size: var(--t-xs);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ochre);
-  margin-bottom: 0.55rem;
-  font-weight: 500;
-}
-
 .lesson-title {
   /* Lora used ONLY here and nowhere else */
   font-family: 'Lora', serif;
@@ -223,22 +218,18 @@ body {
 }
 
 .lesson-purpose {
-  /* Source Sans, not Lora — clear, direct, readable */
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: var(--t-md);
   font-weight: 400;
   color: var(--ink-2);
-  line-height: 1.6;
+  line-height: 1.65;
   border-left: 2px solid var(--ochre);
   padding-left: 1rem;
   margin-bottom: 2.75rem;
 }
 
 /* ===== SECTIONS ===== */
-
-.section {
-  margin-bottom: 2.5rem;
-}
+.section { margin-bottom: 3rem; }
 
 /* Section label: small caps weight, no rule line */
 .section-label {
@@ -303,12 +294,8 @@ body {
 
 .notice-item:first-child { border-top: 1px solid var(--line); }
 
-.notice-marker { display: none; }
-
-.notice-content {}
-
 .notice-strong {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: var(--t-base);
   font-weight: 600;
   color: var(--ink);
@@ -324,27 +311,28 @@ body {
 }
 
 /* ===== COMPARE GRID ===== */
-
 .compare-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  border-top: 2px solid var(--ink-2);
-  border-bottom: 1px solid var(--line-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .compare-cell {
   background: transparent;
-  padding: 0.75rem 0.85rem;
+  padding: 0.7rem 0.9rem;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
 .compare-cell:nth-child(even) { border-right: none; }
+.compare-cell:nth-last-child(-n+2) { border-bottom: none; }
 
 .compare-cell.header {
-  background: transparent;
-  padding-bottom: 0.6rem;
+  background: var(--paper-2);
+  padding-bottom: 0.7rem;
 }
 
 .compare-value {
@@ -354,10 +342,11 @@ body {
 }
 
 /* ===== MISTAKE BOX ===== */
-
-/* No box. Just a typographic callout. */
 .mistake-box {
-  padding: 0;
+  border-left: 2px solid var(--rust);
+  padding: 0.9rem 1rem;
+  background: var(--paper-2);
+  border-radius: var(--radius);
 }
 
 .mistake-label {
@@ -366,25 +355,22 @@ body {
   text-transform: uppercase;
   color: var(--rust);
   font-weight: 600;
-  margin-bottom: 0.55rem;
-  opacity: 0.85;
+  margin-bottom: 0.5rem;
 }
 
 .mistake-text {
-  font-size: var(--t-base);
+  font-size: var(--t-sm);
   color: var(--ink-2);
   line-height: 1.75;
   font-style: italic;
 }
 
 /* ===== KNOWLEDGE CHECK ===== */
-
-/* No background box. Section label + clean list of questions. */
 .check-section {
   background: transparent;
   border: none;
   padding: 0;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .check-header {
@@ -406,8 +392,8 @@ body {
   font-size: var(--t-base);
   font-weight: 600;
   color: var(--ink);
-  margin-bottom: 0.9rem;
-  line-height: 1.55;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .options {
@@ -422,24 +408,25 @@ body {
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--line);
-  padding: 0.7rem 0.5rem 0.7rem 0;
-  font-family: 'Source Sans 3', sans-serif;
+  padding: 0.85rem 0.5rem 0.85rem 0;
+  font-family: 'Inter', sans-serif;
   font-size: var(--t-sm);
   color: var(--ink-2);
   cursor: pointer;
-  transition: color 0.12s, padding-left 0.12s;
-  line-height: 1.5;
+  transition: color 0.12s, padding-left 0.12s, background 0.12s;
+  line-height: 1.55;
   width: 100%;
   display: flex;
   align-items: baseline;
   gap: 0.6rem;
+  min-height: 44px;
 }
 
 .option-btn::before {
   content: attr(data-letter);
   font-size: var(--t-xs);
   color: var(--ink-3);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
   flex-shrink: 0;
   min-width: 1rem;
@@ -452,15 +439,14 @@ body {
 
 .option-btn.correct {
   color: var(--sage);
-  font-weight: 500;
+  font-weight: 600;
 }
-
 .option-btn.correct::before { color: var(--sage); }
 
 .option-btn.wrong {
   color: var(--ink-3);
   text-decoration: line-through;
-  text-decoration-color: var(--line-2);
+  text-decoration-color: rgba(28,24,17,0.25);
 }
 
 .option-btn.revealed { cursor: default; }
@@ -468,24 +454,23 @@ body {
 
 .answer-reveal {
   margin-top: 1rem;
-  padding: 0.85rem 0 0;
-  border-top: 1px solid var(--line);
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  background: var(--paper-2);
   font-size: var(--t-sm);
   color: var(--ink-2);
   line-height: 1.75;
   display: none;
-  background: transparent;
-  border-left: none;
+  border-left: 2px solid var(--sage);
 }
-
 .answer-reveal.show { display: block; }
 
 /* ===== DRILL ===== */
-
 .drill-box {
-  border: none;
-  border-top: 1px solid var(--line);
-  padding: 1.25rem 0 0;
+  border-left: 2px solid var(--sage);
+  padding: 0.9rem 1rem;
+  background: var(--paper-2);
+  border-radius: var(--radius);
 }
 
 .drill-label {
@@ -494,11 +479,11 @@ body {
   text-transform: uppercase;
   color: var(--sage);
   font-weight: 600;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .drill-text {
-  font-size: var(--t-base);
+  font-size: var(--t-sm);
   color: var(--ink-2);
   line-height: 1.75;
 }
@@ -520,13 +505,15 @@ body {
   background: var(--ink);
   color: rgba(246,242,235,0.92);
   border: none;
-  padding: 0.65rem 1.4rem;
-  font-family: 'Source Sans 3', sans-serif;
+  padding: 0.7rem 1.5rem;
+  font-family: 'Inter', sans-serif;
   font-size: var(--t-sm);
   font-weight: 600;
   cursor: pointer;
   transition: background 0.15s;
   letter-spacing: 0.03em;
+  border-radius: var(--radius);
+  min-height: 44px;
 }
 
 .mark-done-btn:hover { background: var(--ink-2); }
@@ -541,12 +528,14 @@ body {
   background: transparent;
   border: 1px solid var(--line-2);
   color: var(--ink-2);
-  padding: 0.55rem 0.9rem;
-  font-family: 'Source Sans 3', sans-serif;
+  padding: 0.6rem 1rem;
+  font-family: 'Inter', sans-serif;
   font-size: var(--t-sm);
   font-weight: 500;
   cursor: pointer;
   transition: border-color 0.12s, color 0.12s;
+  border-radius: var(--radius);
+  min-height: 44px;
 }
 
 .nav-arrow:hover {
@@ -610,16 +599,17 @@ body {
   background: var(--ochre);
   border: none;
   color: rgba(246,242,235,0.97);
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--t-xs);
   font-weight: 600;
   letter-spacing: 0.04em;
-  padding: 0.45rem 0.9rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
   transition: background 0.15s;
-  border-radius: 2px;
+  border-radius: var(--radius);
+  min-height: 44px;
 }
 .mob-topbar-btn:hover { background: #7A5016; }
 .mob-topbar-btn svg { width: 13px; height: 13px; opacity: 0.92; flex-shrink: 0; }
@@ -672,11 +662,13 @@ body {
   font-size: var(--t-xs);
   font-weight: 600;
   letter-spacing: 0.04em;
-  padding: 0.35rem 0.55rem;
-  font-family: 'Source Sans 3', sans-serif;
+  padding: 0.5rem 0.7rem;
+  font-family: 'Inter', sans-serif;
   transition: background 0.12s;
+  border-radius: var(--radius);
+  min-height: 36px;
 }
-.sheet-close:hover { background: var(--paper-3); color: var(--ink); }
+.sheet-close:hover { background: var(--paper-2); color: var(--ink); }
 
 .sheet-body { padding: 0 0 3rem; }
 .sheet-group { margin-bottom: 0; }
@@ -842,44 +834,56 @@ body {
 .nav-group.collapsed .nav-group-items { display: none; }
 
 /* ===== RESPONSIVE ===== */
-
 @media (max-width: 760px) {
   .sidebar { display: none; }
   .mob-topbar { display: flex; }
   .main { margin-left: 0; padding-top: 52px; }
   .lesson-page { padding: 2rem 1.25rem 5rem; max-width: 100%; }
-  .lesson-title { font-size: 1.6rem; }
+  .lesson-title { font-size: 1.65rem; line-height: 1.2; }
   .lesson-purpose { font-size: var(--t-base); }
   .field-scene-text { font-size: var(--t-base); }
   .compare-grid { grid-template-columns: 1fr; }
+  .compare-cell:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .compare-cell:last-child { border-bottom: none; }
   .compare-header-img { height: 60px; }
   .notice-img { width: 72px; height: 54px; }
-  .lesson-footer { flex-direction: column-reverse; align-items: flex-start; }
+  .lesson-footer { flex-direction: column-reverse; align-items: stretch; }
+  .nav-arrows { width: 100%; }
+  .nav-arrow { flex: 1; justify-content: center; text-align: center; }
+  .mark-done-btn { width: 100%; justify-content: center; text-align: center; }
+  .id-gallery { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 761px) and (max-width: 1100px) {
   .lesson-page { padding: 3rem 2rem 5rem; }
 }
 
-/* ===== IMAGE PLACEHOLDER ===== */
+/* ===== IMAGE LOADING STATES ===== */
+img[data-wiki] {
+  background: var(--paper-3);
+  transition: opacity 0.2s;
+}
+img[data-wiki][src=""] {
+  opacity: 0;
+}
 .img-placeholder {
   display: flex; align-items: center; justify-content: center;
   background: var(--paper-3); color: var(--ink-3);
   font-size: var(--t-xs); font-style: italic;
-  text-align: center; padding: 0.25rem;
-  border-radius: 3px; line-height: 1.3;
+  text-align: center; padding: 0.5rem;
+  border-radius: var(--radius); line-height: 1.4;
+  font-family: 'Inter', sans-serif;
 }
 .notice-img-block .img-placeholder { width: 90px; height: 68px; }
 .id-gallery-item .img-placeholder { width: 100%; aspect-ratio: 4/3; }
 .compare-cell.header .img-placeholder { width: 100%; height: 80px; margin-bottom: 0.5rem; }
 
 /* ===== LESSON META ROW ===== */
-/* Lesson N of 20 + group tag — orientation anchor for ADHD re-entry */
 .lesson-meta {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.65rem;
 }
 .lesson-num {
   font-size: var(--t-xs);
@@ -894,56 +898,72 @@ body {
   color: var(--ochre);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* ===== LESSON ARC ===== */
-/* Shows the lesson structure at a glance — "where am I?" for ADHD */
 .lesson-arc {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.3rem;
-  margin-bottom: 2.5rem;
-  padding: 0.7rem 0;
+  margin-bottom: 2.75rem;
+  padding: 0.6rem 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 .arc-step {
   font-size: var(--t-xs);
   color: var(--ink-3);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   white-space: nowrap;
 }
 .arc-sep {
   font-size: var(--t-xs);
   color: var(--line-2);
+  user-select: none;
 }
 
-/* ===== IMPROVED SECTION BREATHING ROOM ===== */
-/* More whitespace between sections reduces wall-of-text feel */
-.section {
-  margin-bottom: 3rem;
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 1rem;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  z-index: 200;
 }
-.field-scene {
-  margin: 0 0 3.25rem;
-}
-.check-section {
-  margin-bottom: 3rem;
+.skip-link:focus { top: 1rem; }
+
+/* ===== PRINT ===== */
+@media print {
+  .sidebar, .mob-topbar, .bottom-sheet, .sheet-overlay,
+  .lesson-footer, .check-section { display: none !important; }
+  .main { margin-left: 0; }
+  .lesson-page { display: block !important; padding: 1rem; }
+  body { font-size: 11pt; color: #000; background: #fff; }
 }
 
 </style>
 </head>
 <body>
 
+<!-- Skip to content — keyboard accessibility -->
+<a href="#mainContent" class="skip-link">Skip to content</a>
+
 <!-- Shared overlay (desktop sidebar + mobile sheet) -->
 <div class="sheet-overlay" id="sheetOverlay" onclick="closeSheet()"></div>
 
 <!-- Desktop sidebar -->
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar" id="sidebar" aria-label="Lesson navigation">
   <div class="sidebar-head">
     <div class="sidebar-title">Field Guide Theory<br>Study Workbook</div>
-    <div class="sidebar-sub">South Africa / NQF2 prep</div>
+    <div class="sidebar-sub">South Africa · NQF2 prep</div>
   </div>
   <div class="sidebar-progress">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -979,7 +999,7 @@ body {
   <div class="sheet-body" id="sheetBody"></div>
 </div>
 
-<main class="main" id="mainContent"></main>
+<main class="main" id="mainContent" aria-live="polite" aria-label="Lesson content"></main>
 
 <script>
 // ===================================================================
@@ -988,30 +1008,55 @@ body {
 
 
 // ===================================================================
-//  IMAGE LOADING
-//  The S3 bucket (inaturalist-open-data.s3.amazonaws.com) is
-//  unstable. static.inaturalist.org is iNaturalist's own stable CDN.
-//  We simply swap the domain at render time — same photo ID, same path.
+//  IMAGE LOADING — Wikipedia pageimages API
+//  Each img[data-wiki] attribute holds the exact Wikipedia article
+//  title. On load we batch-fetch thumbnail URLs from the Wikipedia
+//  API (no auth, CORS-open, returns real hosted URLs).
 // ===================================================================
 
-function fixInatUrl(src) {
-  return (src || '').replace(
-    'inaturalist-open-data.s3.amazonaws.com',
-    'static.inaturalist.org'
-  );
-}
+const wikiImageCache = {};
 
-function resolveAllImages() {
-  document.querySelectorAll('img[data-inat-src]').forEach(img => {
-    const fixed = fixInatUrl(img.getAttribute('data-inat-src'));
-    if (fixed) img.src = fixed;
+async function resolveAllImages() {
+  const imgs = Array.from(document.querySelectorAll('img[data-wiki]'));
+  if (!imgs.length) return;
+
+  // Collect unique article titles
+  const titles = [...new Set(imgs.map(img => img.getAttribute('data-wiki')))];
+
+  // Batch in groups of 10 (API limit per request is safe at 50, but 10 is fine)
+  for (let i = 0; i < titles.length; i += 10) {
+    const batch = titles.slice(i, i + 10);
+    const url = `https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=thumbnail&pithumbsize=400&titles=${batch.map(encodeURIComponent).join('|')}&format=json&origin=*`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const pages = data.query && data.query.pages;
+      if (pages) {
+        Object.values(pages).forEach(page => {
+          if (page.thumbnail && page.thumbnail.source) {
+            wikiImageCache[page.title] = page.thumbnail.source;
+          }
+        });
+      }
+    } catch(e) { /* silently fail, imgFallback handles it */ }
+  }
+
+  // Apply to all images
+  imgs.forEach(img => {
+    const title = img.getAttribute('data-wiki');
+    const src = wikiImageCache[title];
+    if (src) {
+      img.src = src;
+    } else {
+      imgFallback(img);
+    }
   });
 }
 
 function imgFallback(img) {
-  var span = document.createElement('span');
+  const span = document.createElement('span');
   span.className = 'img-placeholder';
-  span.textContent = img.alt || '';
+  span.textContent = img.alt || 'Image unavailable';
   if (img.parentNode) img.parentNode.insertBefore(span, img.nextSibling);
   img.style.display = 'none';
 }
@@ -1282,12 +1327,12 @@ const lessons = [
     { strong: "Learn families before species", detail: "There are over 500 bird species regularly recorded in the Kruger. Trying to learn them all at once produces overwhelm and shallow retention. Instead, learn to recognise: kingfishers (bright, compact, water-associated), rollers (stocky, vivid, perch-exposed), starlings (iridescent, social, noisy), raptors (broad wing, soaring flight, hooked bill), hornbills (huge curved bill, black and white or red-billed). Species follow naturally from confident family recognition." }
   ],
   idGallery: [
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1503574/medium.jpg", label: "Lilac-breasted Roller" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/112566/medium.jpg", label: "African Fish Eagle" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/5391849/medium.jpg", label: "Fork-tailed Drongo" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/213842/medium.jpg", label: "Southern Ground Hornbill" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4371882/medium.jpg", label: "Woodland Kingfisher" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/3060024/medium.jpg", label: "Yellow-billed Hornbill" }
+    { src: "Lilac-breasted roller", label: "Lilac-breasted Roller" },
+    { src: "African fish eagle", label: "African Fish Eagle" },
+    { src: "Fork-tailed drongo", label: "Fork-tailed Drongo" },
+    { src: "Southern ground hornbill", label: "Southern Ground Hornbill" },
+    { src: "Woodland kingfisher", label: "Woodland Kingfisher" },
+    { src: "Yellow-billed hornbill", label: "Yellow-billed Hornbill" }
   ],
   mattersText: "Birds are the most species-rich vertebrate group you will be assessed on. The FGASA bird assessment includes both visual identification and call recognition for core and biome-specific species lists. But beyond the exam, birds give you real-time information about predator presence, water location, fruiting trees, seasonal change, and habitat quality. They are one of the most powerful tools in field interpretation.",
   compareGrid: {
@@ -1340,17 +1385,17 @@ const lessons = [
     {
       strong: "Southern Ground Hornbill: the sound of African dawn",
       detail: "A deep resonant booming, often in pairs, carrying two kilometres or more before first light. Family groups of three to nine birds move slowly through open ground. Endangered in South Africa outside Kruger. A morning where you hear this before the sun rises is a good morning.",
-      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/213842/medium.jpg", alt: "Southern Ground Hornbill" }]
+      imgs: [{ src: "Southern ground hornbill", alt: "Southern Ground Hornbill" }]
     },
     {
       strong: "African Fish Eagle: one call, no ambiguity",
       detail: "A loud far-carrying yelp with the head thrown back, often in duet. Once you have heard it you cannot confuse it with anything else. It means open water is nearby. Both sound clip and description are tested in the FGASA assessment.",
-      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/112566/medium.jpg", alt: "African Fish Eagle" }]
+      imgs: [{ src: "African fish eagle", alt: "African Fish Eagle" }]
     },
     {
       strong: "Woodland Kingfisher: the sound of summer arriving",
       detail: "A sharp ascending then descending whistle, loud and repetitive. Migrates from central Africa in October. Despite the name, hunts insects in woodland rather than fish. One of the most commonly tested summer migrants on the call assessment.",
-      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4371882/medium.jpg", alt: "Woodland Kingfisher" }]
+      imgs: [{ src: "Woodland kingfisher", alt: "Woodland Kingfisher" }]
     },
     {
       strong: "Red-chested Cuckoo: heard constantly, seen almost never",
@@ -1359,7 +1404,7 @@ const lessons = [
     {
       strong: "Fork-tailed Drongo: mimic, thief, and genuine sentinel",
       detail: "Can produce convincing versions of over 50 other species' calls, including alarm calls of meerkats and starlings, to steal their food. Its genuine alarm is a harsh churring from an exposed perch. Learning the difference between its real alarm and its deceptions is an advanced skill that comes with field time.",
-      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/5391849/medium.jpg", alt: "Fork-tailed Drongo" }]
+      imgs: [{ src: "Fork-tailed drongo", alt: "Fork-tailed Drongo" }]
     }
   ],
   mattersText: "The call assessment is where many students drop marks. Visual ID can be prepared from field guides. Calls require ear training over time, and that training needs to start now. Merlin Bird ID Sound ID works in Australia. Use it every time you are outdoors.",
@@ -1413,33 +1458,33 @@ const lessons = [
     {
       strong: "Reading vulture behaviour from the vehicle",
       detail: "High slow circling on thermals is prospecting: scanning from altitude, monitoring neighbouring birds for cues. A tightening spiral means something has been confirmed below. Rapid descent with wings half-folded means the bird is committing. Multiple birds converging from different compass points within minutes of each other is the information network working at scale.",
-      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg", alt: "White-backed Vulture soaring" }]
+      imgs: [{ src: "White-backed vulture", alt: "White-backed Vulture soaring" }]
     },
     {
       strong: "Three vultures at every Lowveld kill",
       detail: "White-backed Vulture (Gyps africanus): most abundant, pale ruff and white back in flight, arrives early and feeds in noisy groups. Lappet-faced Vulture (Torgos tracheliotos): dominant, dark, large pink facial folds, the only species with bill strength to open a fresh carcass. Hooded Vulture (Necrosyrtes monachus): smallest, dark with a bare pink face, waits at the edges.",
       imgs: [
-        { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg", alt: "White-backed Vulture" },
-        { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/11277929/medium.jpg", alt: "Lappet-faced Vulture" }
+        { src: "White-backed vulture", alt: "White-backed Vulture" },
+        { src: "Lappet-faced vulture", alt: "Lappet-faced Vulture" }
       ]
     },
     {
       strong: "Bateleur: unmistakable silhouette",
       detail: "Terathopius ecaudatus. Extremely short tail, very long broad wings, a distinctive rocking flight that makes it identifiable at any distance. Adults show black and white underparts, bright red face and feet. Often the first raptor to arrive near a kill because it covers vast distances at low altitude daily.",
-      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4370267/medium.jpg", alt: "Bateleur Eagle" }]
+      imgs: [{ src: "Bateleur", alt: "Bateleur Eagle" }]
     },
     {
       strong: "Secretarybird: the snake-stamper",
       detail: "Sagittarius serpentarius. Long-legged, upright walking raptor in open grassland. Kills by stamping with full body weight rather than using its bill. One of only two raptors that hunts primarily on foot. A slow vehicle approach in open ground can allow guests to watch it hunt at close range for extended periods.",
-      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/3046456/medium.jpg", alt: "Secretarybird" }]
+      imgs: [{ src: "Secretarybird", alt: "Secretarybird" }]
     }
   ],
   mattersText: "Raptors reward patient, explanatory guiding. You do not find them: they find the sky. Your role is to explain what the behaviour means and why it matters ecologically. Vulture poisoning is the leading cause of raptor decline across Africa. Guests who understand that vultures are a disease-control system, not just scavengers, leave with something worth knowing.",
   compareGrid: {
     heading: ["White-backed Vulture", "Lappet-faced Vulture"],
     imgs: [
-      "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg",
-      "https://inaturalist-open-data.s3.amazonaws.com/photos/11277929/medium.jpg"
+      "White-backed vulture",
+      "Lappet-faced vulture"
     ],
     rows: [
       ["Gyps africanus", "Torgos tracheliotos"],
@@ -1476,12 +1521,12 @@ const lessons = [
   ],
   drill: "Search YouTube for vultures feeding Africa and watch at least five minutes of unedited footage. Identify: which species arrive first, which arrive later, and the body language that shows dominance at the carcass. Then search Bateleur eagle flight and watch its silhouette in the air: the extremely short tail and rocking motion are distinctive and worth fixing in visual memory before arrival.",
   idGallery: [
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg", label: "White-backed Vulture" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/11277929/medium.jpg", label: "Lappet-faced Vulture" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4370267/medium.jpg", label: "Bateleur Eagle" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/3046456/medium.jpg", label: "Secretarybird" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/213842/medium.jpg", label: "Southern Ground Hornbill" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1503574/medium.jpg", label: "Lilac-breasted Roller" }
+    { src: "White-backed vulture", label: "White-backed Vulture" },
+    { src: "Lappet-faced vulture", label: "Lappet-faced Vulture" },
+    { src: "Bateleur", label: "Bateleur Eagle" },
+    { src: "Secretarybird", label: "Secretarybird" },
+    { src: "Southern ground hornbill", label: "Southern Ground Hornbill" },
+    { src: "Lilac-breasted roller", label: "Lilac-breasted Roller" }
   ]
 },
 
@@ -1500,18 +1545,18 @@ const lessons = [
   ],
   mattersText: "Mammal behaviour on assessment is not just 'what does it eat.' You will be expected to read and interpret posture, social context, and likely next action. Assessors watch whether you can take a static sighting and give guests a reason to keep watching: by reading what is about to happen, not only naming what is already there.",
   idGallery: [
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1127042/medium.jpg", label: "White Rhino (square lip)" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/6748163/medium.jpg", label: "Black Rhino (hooked lip)" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/973365/medium.jpg", label: "African Elephant" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1038527/medium.jpg", label: "Lion" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/6261082/medium.jpg", label: "Giraffe" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1053025/medium.jpg", label: "African Buffalo" }
+    { src: "White rhinoceros", label: "White Rhino (square lip)" },
+    { src: "Black rhinoceros", label: "Black Rhino (hooked lip)" },
+    { src: "African bush elephant", label: "African Elephant" },
+    { src: "Lion", label: "Lion" },
+    { src: "Giraffe", label: "Giraffe" },
+    { src: "African buffalo", label: "African Buffalo" }
   ],
   compareGrid: {
     heading: ["White Rhino", "Black Rhino"],
     imgs: [
-      "https://inaturalist-open-data.s3.amazonaws.com/photos/1127042/medium.jpg",
-      "https://inaturalist-open-data.s3.amazonaws.com/photos/6748163/medium.jpg"
+      "White rhinoceros",
+      "Black rhinoceros"
     ],
     rows: [
       ["Wide square lip: grazer", "Hooked prehensile lip: browser"],
@@ -1709,12 +1754,12 @@ const lessons = [
   mattersText: "Reptiles are highly effective with guests who are nervous about them: the guide who can explain how a snake's heat-sensing pits work, why the puff adder does not flee, or how a crocodile can hold its breath for over an hour: the result is usually curiosity rather than fear. Reptile literacy makes you a better guide.",
   mistake: "Beginners sometimes identify snakes wrongly from a distance and speak with false confidence. If you are not certain, say you are not certain. Tell guests what you observe: thick body, triangular head, not moving. Then explain why that means you are treating it with maximum caution regardless of exact species.",
   idGallery: [
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1127719/medium.jpg", label: "Puff Adder" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/5389396/medium.jpg", label: "Black Mamba" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/11049779/medium.jpg", label: "Mozambique Spitting Cobra" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1492862/medium.jpg", label: "Water Monitor" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1083219/medium.jpg", label: "Leopard Tortoise" },
-    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1114030/medium.jpg", label: "Nile Crocodile" }
+    { src: "Puff adder", label: "Puff Adder" },
+    { src: "Black mamba", label: "Black Mamba" },
+    { src: "Mozambique spitting cobra", label: "Mozambique Spitting Cobra" },
+    { src: "Nile monitor", label: "Water Monitor" },
+    { src: "Leopard tortoise", label: "Leopard Tortoise" },
+    { src: "Nile crocodile", label: "Nile Crocodile" }
   ],
   quiz: [
     {
@@ -1961,10 +2006,15 @@ function renderNav() {
     groups[g].forEach(l => {
       sidebarHtml += `
           <div class="nav-item ${l.id === currentId ? 'active' : ''} ${completed.has(l.id) ? 'completed' : ''}"
-            onclick="showLesson(${l.id})" data-id="${l.id}">
+            onclick="showLesson(${l.id})"
+            onkeydown="if(event.key==='Enter'||event.key===' ')showLesson(${l.id})"
+            tabindex="0"
+            role="button"
+            aria-pressed="${l.id === currentId}"
+            data-id="${l.id}">
             <span class="nav-item-num">${String(l.id).padStart(2,'0')}</span>
             <span class="nav-item-text">${l.title}</span>
-            <span class="nav-item-check"></span>
+            <span class="nav-item-check" aria-hidden="true"></span>
           </div>`;
     });
     sidebarHtml += `</div></div>`;
@@ -1981,35 +2031,20 @@ function renderSheet() {
     if (!groups[l.group]) groups[l.group] = [];
     groups[l.group].push(l);
   });
-  const groupColors = {
-    "Core Orientation":        "#8A5C18",
-    "Ecological Foundations":  "#4A6741",
-    "Botany":                  "#5A7A2E",
-    "Birds":                   "#2E6B7A",
-    "Mammals":                 "#7A4E2E",
-    "Animal Behaviour":        "#6B4A7A",
-    "Tracking and Field Signs":"#7A5E2E",
-    "Conservation":            "#3E6B5A",
-    "Night Sky and Navigation":"#2E3E6B",
-    "Reptiles":                "#5A6B3E",
-    "Amphibians and Fish":     "#2E5A6B",
-    "Arthropods":              "#6B5A2E",
-    "Guiding Readiness":       "#6B2E3E",
-    "Human History":           "#8A6B3E",
-    "Taxonomy":                "#4E4E6B",
-  };
   let html = '';
   Object.keys(groups).forEach(g => {
-    const color = groupColors[g] || '#6B6252';
     html += `<div class="sheet-group">
       <div class="sheet-group-label">${g}</div>
       <div class="sheet-cards">`;
     groups[g].forEach(l => {
       html += `<div class="sheet-card ${l.id === currentId ? 'active' : ''} ${completed.has(l.id) ? 'completed' : ''}"
-        onclick="sheetNav(${l.id})" data-sheet-id="${l.id}">
+        onclick="sheetNav(${l.id})"
+        onkeydown="if(event.key==='Enter'||event.key===' ')sheetNav(${l.id})"
+        tabindex="0" role="button" aria-pressed="${l.id === currentId}"
+        data-sheet-id="${l.id}">
         <span class="sheet-card-num">${String(l.id).padStart(2,'0')}</span>
         <span class="sheet-card-title">${l.title}</span>
-        <span class="sheet-card-done"></span>
+        <span class="sheet-card-done" aria-hidden="true"></span>
       </div>`;
     });
     html += `</div></div>`;
@@ -2063,9 +2098,9 @@ function buildLessonArc(l) {
   return `<div class="lesson-arc">${steps.map(s => `<span class="arc-step">${s}</span>`).join('<span class="arc-sep">·</span>')}</div>`;
 }
 
-function inatImg(src, alt, cls) {
-  if (!src) return `<span class="img-placeholder">${alt}</span>`;
-  return `<img class="${cls}" data-inat-src="${src}" src="" alt="${alt}" loading="lazy" onerror="imgFallback(this)">`;
+function speciesImg(wikiTitle, alt, cls) {
+  if (!wikiTitle) return `<span class="img-placeholder">${alt}</span>`;
+  return `<img class="${cls}" data-wiki="${wikiTitle}" src="" alt="${alt}" loading="lazy" onerror="imgFallback(this)">`;
 }
 
 function buildLessonHTML(l) {
@@ -2087,13 +2122,13 @@ function buildLessonHTML(l) {
   if (l.notices && l.notices.length) {
     html += `<div class="section"><div class="section-label">What to notice</div><ul class="notice-list">`;
     l.notices.forEach(n => {
-      html += `<li class="notice-item"><div class="notice-marker"></div><div class="notice-content">
+      html += `<li class="notice-item"><div class="notice-content">
         <span class="notice-strong">${n.strong}</span>`;
       if (n.imgs && n.imgs.length) {
         html += `<span class="notice-detail">${n.detail || ''}</span><div class="notice-img-wrap">`;
         n.imgs.forEach(img => {
           html += `<div class="notice-img-block">
-            ${inatImg(img.src, img.alt, 'notice-img')}
+            ${speciesImg(img.src, img.alt, 'notice-img')}
             <span class="notice-img-caption">${img.alt}</span>
           </div>`;
         });
@@ -2110,7 +2145,7 @@ function buildLessonHTML(l) {
     html += `<div class="section"><div class="section-label">Visual reference</div><div class="id-gallery">`;
     l.idGallery.forEach(item => {
       html += `<div class="id-gallery-item">
-        ${inatImg(item.src, item.label, 'id-gallery-img')}
+        ${speciesImg(item.src, item.label, 'id-gallery-img')}
         <span class="id-gallery-label">${item.label}</span>
       </div>`;
     });
@@ -2125,12 +2160,12 @@ function buildLessonHTML(l) {
     html += `<div class="section"><div class="section-label">Compare and contrast</div><div class="compare-grid">
       <div class="compare-cell header">`;
     if (l.compareGrid.imgs && l.compareGrid.imgs[0]) {
-      html += inatImg(l.compareGrid.imgs[0], l.compareGrid.heading[0], 'compare-header-img');
+      html += speciesImg(l.compareGrid.imgs[0], l.compareGrid.heading[0], 'compare-header-img');
     }
     html += `<div class="compare-value" style="font-weight:600">${l.compareGrid.heading[0]}</div></div>
       <div class="compare-cell header">`;
     if (l.compareGrid.imgs && l.compareGrid.imgs[1]) {
-      html += inatImg(l.compareGrid.imgs[1], l.compareGrid.heading[1], 'compare-header-img');
+      html += speciesImg(l.compareGrid.imgs[1], l.compareGrid.heading[1], 'compare-header-img');
     }
     html += `<div class="compare-value" style="font-weight:600">${l.compareGrid.heading[1]}</div></div>`;
     l.compareGrid.rows.forEach(r => {
@@ -2195,15 +2230,15 @@ function buildLessonHTML(l) {
 
   html += `<div class="lesson-footer">
     <div class="nav-arrows">
-      <button class="nav-arrow" onclick="showLesson(${prev ? prev.id : ''})" ${!prev ? 'disabled' : ''}>
+      <button class="nav-arrow" onclick="showLesson(${prev ? prev.id : ''})" ${!prev ? 'disabled' : ''} aria-label="${prev ? 'Previous: ' + prev.title : 'No previous lesson'}">
         &larr; ${prev ? prev.title : ''}
       </button>
-      <button class="nav-arrow" onclick="showLesson(${next ? next.id : ''})" ${!next ? 'disabled' : ''}>
+      <button class="nav-arrow" onclick="showLesson(${next ? next.id : ''})" ${!next ? 'disabled' : ''} aria-label="${next ? 'Next: ' + next.title : 'No next lesson'}">
         ${next ? next.title : ''} &rarr;
       </button>
     </div>
-    <button class="mark-done-btn ${isDone ? 'done' : ''}" onclick="markDone(${l.id})">
-      ${isDone ? 'Completed' : 'Mark as read'}
+    <button class="mark-done-btn ${isDone ? 'done' : ''}" onclick="markDone(${l.id})" aria-pressed="${isDone}">
+      ${isDone ? '✓ Completed' : 'Mark as read'}
     </button>
   </div>`;
 
@@ -2234,11 +2269,9 @@ function showLesson(id) {
   if (page) {
     page.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    page.querySelectorAll('img[data-inat-src]').forEach(img => {
-      if (!img.src || img.src === window.location.href) {
-        img.src = fixInatUrl(img.getAttribute('data-inat-src'));
-      }
-    });
+    // Resolve images for this lesson (uses cache after first load)
+    const unloaded = page.querySelectorAll('img[data-wiki][src=""]');
+    if (unloaded.length) resolveAllImages();
   }
 
   // Update desktop sidebar active state
@@ -2282,7 +2315,11 @@ function answerQuestion(lessonId, qIndex, selected, correct) {
 function markDone(id) {
   completed.add(id);
   const btn = document.querySelector(`#lesson-${id} .mark-done-btn`);
-  if (btn) { btn.textContent = 'Completed'; btn.classList.add('done'); }
+  if (btn) {
+    btn.textContent = '✓ Completed';
+    btn.classList.add('done');
+    btn.setAttribute('aria-pressed', 'true');
+  }
 
   // Desktop sidebar
   document.querySelectorAll('.nav-item').forEach(item => {
