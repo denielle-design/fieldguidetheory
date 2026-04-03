@@ -234,105 +234,90 @@ body {
 /* ===== SECTIONS ===== */
 
 .section {
-  margin-bottom: 2.75rem;
+  margin-bottom: 2.5rem;
 }
 
+/* Section label: small caps weight, no rule line */
 .section-label {
   font-size: var(--t-xs);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-2);
-  font-weight: 500;
+  color: var(--ochre);
+  font-weight: 600;
   margin-bottom: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
 }
 
 .body-text {
   font-size: var(--t-base);
   color: var(--ink-2);
-  line-height: 1.75;
+  line-height: 1.78;
 }
 
 .body-text + .body-text { margin-top: 0.9rem; }
 
 /* ===== FIELD SCENE ===== */
 
+/* Drop the box entirely. Treat as indented pull text. */
 .field-scene {
-  background: var(--paper-2);
-  border-left: 3px solid var(--ochre);
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 2.75rem;
-  /* no box border, no border-radius — cleaner, flatter */
+  margin: 0 0 2.75rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(138,92,24,0.35);
 }
 
 .field-scene-label {
   font-size: var(--t-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--ochre);
-  font-weight: 500;
-  margin-bottom: 0.65rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  opacity: 0.7;
 }
 
 .field-scene-text {
-  /* Source Sans italic, not Lora — avoids the serif-on-serif clash */
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Lora', serif;
   font-style: italic;
-  font-size: var(--t-md);
+  font-weight: 400;
+  font-size: 1.05rem;
   color: var(--ink-2);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* ===== NOTICE LIST ===== */
 
+/* Clean numbered list — no bullets, no dots, no component feel */
 .notice-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;   /* generous gap so items breathe */
+  gap: 0;
 }
 
 .notice-item {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.notice-marker {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--ochre);
-  flex-shrink: 0;
-  margin-top: 0.6rem;  /* align with first line of notice-strong */
-}
+.notice-item:first-child { border-top: 1px solid var(--line); }
+
+.notice-marker { display: none; }
 
 .notice-content {}
 
 .notice-strong {
-  /* clear 2-step jump over notice-detail */
   font-family: 'Source Sans 3', sans-serif;
   font-size: var(--t-base);
   font-weight: 600;
   color: var(--ink);
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
   line-height: 1.4;
 }
 
 .notice-detail {
-  /* 13px vs 15px — visually distinct, not just different */
   font-size: var(--t-sm);
-  color: var(--ink-3);
-  line-height: 1.65;
+  color: var(--ink-2);
+  line-height: 1.7;
 }
 
 /* ===== COMPARE GRID ===== */
@@ -340,19 +325,23 @@ body {
 .compare-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--line-2);
-  border: 1px solid var(--line-2);
-  overflow: hidden;
+  gap: 0;
+  border-top: 2px solid var(--ink-2);
+  border-bottom: 1px solid var(--line-2);
 }
 
 .compare-cell {
-  background: var(--paper);
-  padding: 0.9rem 1rem;
+  background: transparent;
+  padding: 0.75rem 0.85rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
+.compare-cell:nth-child(even) { border-right: none; }
+
 .compare-cell.header {
-  background: var(--paper-3);
+  background: transparent;
+  padding-bottom: 0.6rem;
 }
 
 .compare-value {
@@ -363,50 +352,50 @@ body {
 
 /* ===== MISTAKE BOX ===== */
 
+/* No box. Just a typographic callout. */
 .mistake-box {
-  background: rgba(124,51,33,0.04);
-  border-left: 2px solid var(--rust);
-  padding: 1rem 1.25rem;
+  padding: 0;
 }
 
 .mistake-label {
   font-size: var(--t-xs);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--rust);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 0.55rem;
+  opacity: 0.85;
 }
 
 .mistake-text {
   font-size: var(--t-base);
   color: var(--ink-2);
-  line-height: 1.7;
+  line-height: 1.75;
+  font-style: italic;
 }
 
 /* ===== KNOWLEDGE CHECK ===== */
 
+/* No background box. Section label + clean list of questions. */
 .check-section {
-  background: var(--paper-2);
-  border: 1px solid var(--line-2);
-  padding: 1.5rem;
-  margin-bottom: 2.75rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 2.5rem;
 }
 
 .check-header {
   font-size: var(--t-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-3);
-  font-weight: 500;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--line);
+  color: var(--ochre);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 .question + .question {
-  margin-top: 2rem;
-  padding-top: 2rem;
+  margin-top: 2.25rem;
+  padding-top: 2.25rem;
   border-top: 1px solid var(--line);
 }
 
@@ -421,54 +410,69 @@ body {
 .options {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0;
+  border-top: 1px solid var(--line);
 }
 
 .option-btn {
   text-align: left;
-  background: var(--paper);
-  border: 1px solid var(--line-2);
-  padding: 0.65rem 0.9rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem 0.5rem 0.7rem 0;
   font-family: 'Source Sans 3', sans-serif;
   font-size: var(--t-sm);
   color: var(--ink-2);
   cursor: pointer;
-  transition: border-color 0.12s, background 0.12s;
+  transition: color 0.12s, padding-left 0.12s;
   line-height: 1.5;
   width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.option-btn::before {
+  content: attr(data-letter);
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  min-width: 1rem;
 }
 
 .option-btn:hover:not([disabled]) {
-  border-color: var(--ochre);
-  background: rgba(138,92,24,0.04);
   color: var(--ink);
+  padding-left: 0.4rem;
 }
 
 .option-btn.correct {
-  border-color: var(--sage);
-  background: rgba(73,96,74,0.07);
   color: var(--sage);
+  font-weight: 500;
 }
 
+.option-btn.correct::before { color: var(--sage); }
+
 .option-btn.wrong {
-  border-color: var(--rust);
-  background: rgba(124,51,33,0.05);
-  color: var(--rust);
+  color: var(--ink-3);
   text-decoration: line-through;
-  text-decoration-color: rgba(124,51,33,0.35);
+  text-decoration-color: var(--line-2);
 }
 
 .option-btn.revealed { cursor: default; }
+.option-btn.revealed:hover { padding-left: 0; }
 
 .answer-reveal {
-  margin-top: 0.85rem;
-  padding: 0.85rem 1rem;
-  background: rgba(73,96,74,0.05);
-  border: 1px solid rgba(73,96,74,0.18);
+  margin-top: 1rem;
+  padding: 0.85rem 0 0;
+  border-top: 1px solid var(--line);
   font-size: var(--t-sm);
   color: var(--ink-2);
-  line-height: 1.7;
+  line-height: 1.75;
   display: none;
+  background: transparent;
+  border-left: none;
 }
 
 .answer-reveal.show { display: block; }
@@ -476,18 +480,18 @@ body {
 /* ===== DRILL ===== */
 
 .drill-box {
-  border: 1px solid var(--line-2);
-  border-left: 2px solid var(--sage);
-  padding: 1.1rem 1.35rem;
+  border: none;
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 0 0;
 }
 
 .drill-label {
   font-size: var(--t-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--sage);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
 }
 
 .drill-text {
@@ -637,7 +641,7 @@ body {
 .sheet-handle-row {
   display: flex;
   align-items: center;
-  padding: 0.85rem 1.25rem 0.75rem;
+  padding: 1.25rem 1.5rem 1rem;
   border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
@@ -647,12 +651,12 @@ body {
   border-radius: 14px 14px 0 0;
 }
 .sheet-handle {
-  width: 32px; height: 3px;
+  width: 36px; height: 3px;
   background: var(--line-2);
   border-radius: 2px;
   position: absolute;
   left: 50%; transform: translateX(-50%);
-  top: 0.5rem;
+  top: 0.6rem;
 }
 .sheet-heading { font-size: var(--t-base); font-weight: 600; color: var(--ink); }
 .sheet-progress-text { font-size: var(--t-xs); color: var(--ink-2); margin-left: auto; font-weight: 500; }
@@ -668,71 +672,90 @@ body {
 }
 .sheet-close:hover { background: var(--paper-3); color: var(--ink); }
 
-.sheet-body { padding: 1rem 1.1rem 2.5rem; }
-.sheet-group { margin-bottom: 1.5rem; }
+.sheet-body { padding: 0 0 3rem; }
+.sheet-group { margin-bottom: 0; }
+
+/* Group heading: proper weight, not a faint label */
 .sheet-group-label {
   font-size: var(--t-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-2);
-  margin-bottom: 0.6rem;
-  padding-left: 0.1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.sheet-group-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
+  color: var(--ink-3);
+  font-weight: 600;
+  padding: 1.25rem 1.5rem 0.4rem;
 }
 
-/* 2-column card grid */
-.sheet-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
+/* No grid — single column list */
+.sheet-cards { display: block; }
+
 .sheet-card {
-  background: var(--paper-2);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 0.75rem 0.85rem 1.1rem;
-  cursor: pointer;
-  transition: border-color 0.12s, background 0.12s;
-  position: relative;
-  overflow: hidden;
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  min-height: 72px;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.1s;
+  position: relative;
+  overflow: visible;
+  min-height: 0;
 }
-.sheet-card::before {
+
+/* Remove the coloured top bar entirely */
+.sheet-card::before { display: none; }
+
+.sheet-card:hover { background: var(--paper-2); }
+
+.sheet-card.active {
+  background: var(--paper-2);
+}
+
+/* Left-edge accent for active only — thin, clean */
+.sheet-card.active::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--group-color, var(--line-2));
-  opacity: 0.85;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--ochre);
 }
-.sheet-card:hover { border-color: var(--line-2); background: var(--paper-3); }
-.sheet-card.active { border-color: var(--ochre); background: var(--paper); }
-.sheet-card.active::before { background: var(--ochre); opacity: 1; }
-.sheet-card-num { font-size: 0.6rem; color: var(--ink-2); font-variant-numeric: tabular-nums; font-weight: 500; }
+
+.sheet-card-num {
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  flex-shrink: 0;
+  min-width: 1.5rem;
+  padding-top: 0.1rem;
+}
+
 .sheet-card.active .sheet-card-num { color: var(--ochre); }
-.sheet-card-title { font-size: var(--t-sm); color: var(--ink); line-height: 1.35; }
-.sheet-card.active .sheet-card-title { color: var(--ink); font-weight: 500; }
+
+.sheet-card-title {
+  font-size: var(--t-base);
+  color: var(--ink);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.sheet-card.active .sheet-card-title { font-weight: 500; }
 .sheet-card.completed .sheet-card-title { color: var(--ink-3); }
+
 .sheet-card-done {
   width: 5px; height: 5px;
   border-radius: 50%;
   background: var(--sage);
-  position: absolute;
-  bottom: 0.6rem; right: 0.7rem;
+  flex-shrink: 0;
   opacity: 0;
   transition: opacity 0.2s;
+  position: relative;
+  bottom: auto; right: auto;
+  margin-top: 0.35rem;
 }
+
 .sheet-card.completed .sheet-card-done { opacity: 1; }
 
 /* ===== SPECIES IMAGES ===== */
@@ -1170,12 +1193,12 @@ const lessons = [
     { strong: "Learn families before species", detail: "There are over 500 bird species regularly recorded in the Kruger. Trying to learn them all at once produces overwhelm and shallow retention. Instead, learn to recognise: kingfishers (bright, compact, water-associated), rollers (stocky, vivid, perch-exposed), starlings (iridescent, social, noisy), raptors (broad wing, soaring flight, hooked bill), hornbills (huge curved bill, black and white or red-billed). Species follow naturally from confident family recognition." }
   ],
   idGallery: [
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Lilac-breasted_Roller_%28Coracias_caudatus%29.jpg/320px-Lilac-breasted_Roller_%28Coracias_caudatus%29.jpg", label: "Lilac-breasted Roller" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/African_Fish_Eagle_%28Haliaeetus_vocifer%29.jpg/320px-African_Fish_Eagle_%28Haliaeetus_vocifer%29.jpg", label: "African Fish Eagle" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Fork-tailed_Drongo_%28Dicrurus_adsimilis%29.jpg/320px-Fork-tailed_Drongo_%28Dicrurus_adsimilis%29.jpg", label: "Fork-tailed Drongo" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Southern_ground_hornbill.jpg/320px-Southern_ground_hornbill.jpg", label: "Southern Ground Hornbill" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Woodland_Kingfisher_%28Halcyon_senegalensis%29.jpg/320px-Woodland_Kingfisher_%28Halcyon_senegalensis%29.jpg", label: "Woodland Kingfisher" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yellow-billed_Hornbill_%28Tockus_leucomelas%29_%286020698754%29.jpg/320px-Yellow-billed_Hornbill_%28Tockus_leucomelas%29_%286020698754%29.jpg", label: "Yellow-billed Hornbill" }
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1503574/medium.jpg", label: "Lilac-breasted Roller" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/112566/medium.jpg", label: "African Fish Eagle" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/5391849/medium.jpg", label: "Fork-tailed Drongo" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/213842/medium.jpg", label: "Southern Ground Hornbill" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4371882/medium.jpg", label: "Woodland Kingfisher" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/3060024/medium.jpg", label: "Yellow-billed Hornbill" }
   ],
   mattersText: "Birds are the most species-rich vertebrate group you will be assessed on. The FGASA bird assessment includes both visual identification and call recognition for core and biome-specific species lists. But beyond the exam, birds give you real-time information about predator presence, water location, fruiting trees, seasonal change, and habitat quality. They are one of the most powerful tools in field interpretation.",
   compareGrid: {
@@ -1228,17 +1251,17 @@ const lessons = [
     {
       strong: "Southern Ground Hornbill: the sound of African dawn",
       detail: "A deep resonant booming, often in pairs, carrying two kilometres or more before first light. Family groups of three to nine birds move slowly through open ground. Endangered in South Africa outside Kruger. A morning where you hear this before the sun rises is a good morning.",
-      imgs: [{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Southern_ground_hornbill.jpg/320px-Southern_ground_hornbill.jpg", alt: "Southern Ground Hornbill" }]
+      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/213842/medium.jpg", alt: "Southern Ground Hornbill" }]
     },
     {
       strong: "African Fish Eagle: one call, no ambiguity",
       detail: "A loud far-carrying yelp with the head thrown back, often in duet. Once you have heard it you cannot confuse it with anything else. It means open water is nearby. Both sound clip and description are tested in the FGASA assessment.",
-      imgs: [{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/African_Fish_Eagle_%28Haliaeetus_vocifer%29.jpg/320px-African_Fish_Eagle_%28Haliaeetus_vocifer%29.jpg", alt: "African Fish Eagle" }]
+      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/112566/medium.jpg", alt: "African Fish Eagle" }]
     },
     {
       strong: "Woodland Kingfisher: the sound of summer arriving",
       detail: "A sharp ascending then descending whistle, loud and repetitive. Migrates from central Africa in October. Despite the name, hunts insects in woodland rather than fish. One of the most commonly tested summer migrants on the call assessment.",
-      imgs: [{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Woodland_Kingfisher_%28Halcyon_senegalensis%29.jpg/320px-Woodland_Kingfisher_%28Halcyon_senegalensis%29.jpg", alt: "Woodland Kingfisher" }]
+      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4371882/medium.jpg", alt: "Woodland Kingfisher" }]
     },
     {
       strong: "Red-chested Cuckoo: heard constantly, seen almost never",
@@ -1247,7 +1270,7 @@ const lessons = [
     {
       strong: "Fork-tailed Drongo: mimic, thief, and genuine sentinel",
       detail: "Can produce convincing versions of over 50 other species' calls, including alarm calls of meerkats and starlings, to steal their food. Its genuine alarm is a harsh churring from an exposed perch. Learning the difference between its real alarm and its deceptions is an advanced skill that comes with field time.",
-      imgs: [{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Fork-tailed_Drongo_%28Dicrurus_adsimilis%29.jpg/320px-Fork-tailed_Drongo_%28Dicrurus_adsimilis%29.jpg", alt: "Fork-tailed Drongo" }]
+      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/5391849/medium.jpg", alt: "Fork-tailed Drongo" }]
     }
   ],
   mattersText: "The call assessment is where many students drop marks. Visual ID can be prepared from field guides. Calls require ear training over time, and that training needs to start now. Merlin Bird ID Sound ID works in Australia. Use it every time you are outdoors.",
@@ -1301,33 +1324,33 @@ const lessons = [
     {
       strong: "Reading vulture behaviour from the vehicle",
       detail: "High slow circling on thermals is prospecting: scanning from altitude, monitoring neighbouring birds for cues. A tightening spiral means something has been confirmed below. Rapid descent with wings half-folded means the bird is committing. Multiple birds converging from different compass points within minutes of each other is the information network working at scale.",
-      imgs: [{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg/320px-White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg", alt: "White-backed Vulture soaring" }]
+      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg", alt: "White-backed Vulture soaring" }]
     },
     {
       strong: "Three vultures at every Lowveld kill",
       detail: "White-backed Vulture (Gyps africanus): most abundant, pale ruff and white back in flight, arrives early and feeds in noisy groups. Lappet-faced Vulture (Torgos tracheliotos): dominant, dark, large pink facial folds, the only species with bill strength to open a fresh carcass. Hooded Vulture (Necrosyrtes monachus): smallest, dark with a bare pink face, waits at the edges.",
       imgs: [
-        { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg/320px-White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg", alt: "White-backed Vulture" },
-        { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lappet-faced_vulture_%28Torgos_tracheliotos%29.jpg/320px-Lappet-faced_vulture_%28Torgos_tracheliotos%29.jpg", alt: "Lappet-faced Vulture" }
+        { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg", alt: "White-backed Vulture" },
+        { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/11277929/medium.jpg", alt: "Lappet-faced Vulture" }
       ]
     },
     {
       strong: "Bateleur: unmistakable silhouette",
       detail: "Terathopius ecaudatus. Extremely short tail, very long broad wings, a distinctive rocking flight that makes it identifiable at any distance. Adults show black and white underparts, bright red face and feet. Often the first raptor to arrive near a kill because it covers vast distances at low altitude daily.",
-      imgs: [{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Bateleur_%28Terathopius_ecaudatus%29.jpg/320px-Bateleur_%28Terathopius_ecaudatus%29.jpg", alt: "Bateleur Eagle" }]
+      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4370267/medium.jpg", alt: "Bateleur Eagle" }]
     },
     {
       strong: "Secretarybird: the snake-stamper",
       detail: "Sagittarius serpentarius. Long-legged, upright walking raptor in open grassland. Kills by stamping with full body weight rather than using its bill. One of only two raptors that hunts primarily on foot. A slow vehicle approach in open ground can allow guests to watch it hunt at close range for extended periods.",
-      imgs: [{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Secretarybird_%28Sagittarius_serpentarius%29.jpg/320px-Secretarybird_%28Sagittarius_serpentarius%29.jpg", alt: "Secretarybird" }]
+      imgs: [{ src: "https://inaturalist-open-data.s3.amazonaws.com/photos/3046456/medium.jpg", alt: "Secretarybird" }]
     }
   ],
   mattersText: "Raptors reward patient, explanatory guiding. You do not find them: they find the sky. Your role is to explain what the behaviour means and why it matters ecologically. Vulture poisoning is the leading cause of raptor decline across Africa. Guests who understand that vultures are a disease-control system, not just scavengers, leave with something worth knowing.",
   compareGrid: {
     heading: ["White-backed Vulture", "Lappet-faced Vulture"],
     imgs: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg/320px-White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lappet-faced_vulture_%28Torgos_tracheliotos%29.jpg/320px-Lappet-faced_vulture_%28Torgos_tracheliotos%29.jpg"
+      "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg",
+      "https://inaturalist-open-data.s3.amazonaws.com/photos/11277929/medium.jpg"
     ],
     rows: [
       ["Gyps africanus", "Torgos tracheliotos"],
@@ -1364,12 +1387,12 @@ const lessons = [
   ],
   drill: "Search YouTube for vultures feeding Africa and watch at least five minutes of unedited footage. Identify: which species arrive first, which arrive later, and the body language that shows dominance at the carcass. Then search Bateleur eagle flight and watch its silhouette in the air: the extremely short tail and rocking motion are distinctive and worth fixing in visual memory before arrival.",
   idGallery: [
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg/320px-White-backed_vulture_%28Gyps_africanus%29_Kruger.jpg", label: "White-backed Vulture" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lappet-faced_vulture_%28Torgos_tracheliotos%29.jpg/320px-Lappet-faced_vulture_%28Torgos_tracheliotos%29.jpg", label: "Lappet-faced Vulture" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Bateleur_%28Terathopius_ecaudatus%29.jpg/320px-Bateleur_%28Terathopius_ecaudatus%29.jpg", label: "Bateleur Eagle" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Secretarybird_%28Sagittarius_serpentarius%29.jpg/320px-Secretarybird_%28Sagittarius_serpentarius%29.jpg", label: "Secretarybird" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Southern_ground_hornbill.jpg/320px-Southern_ground_hornbill.jpg", label: "Southern Ground Hornbill" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Lilac-breasted_Roller_%28Coracias_caudatus%29.jpg/320px-Lilac-breasted_Roller_%28Coracias_caudatus%29.jpg", label: "Lilac-breasted Roller" }
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/2025834/medium.jpg", label: "White-backed Vulture" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/11277929/medium.jpg", label: "Lappet-faced Vulture" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/4370267/medium.jpg", label: "Bateleur Eagle" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/3046456/medium.jpg", label: "Secretarybird" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/213842/medium.jpg", label: "Southern Ground Hornbill" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1503574/medium.jpg", label: "Lilac-breasted Roller" }
   ]
 },
 
@@ -1388,18 +1411,18 @@ const lessons = [
   ],
   mattersText: "Mammal behaviour on assessment is not just 'what does it eat.' You will be expected to read and interpret posture, social context, and likely next action. Assessors watch whether you can take a static sighting and give guests a reason to keep watching: by reading what is about to happen, not only naming what is already there.",
   idGallery: [
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/White_Rhinoceros_%28Ceratotherium_simum%29.jpg/320px-White_Rhinoceros_%28Ceratotherium_simum%29.jpg", label: "White Rhino (square lip)" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Black_rhinoceros_%28Diceros_bicornis%29.jpg/320px-Black_rhinoceros_%28Diceros_bicornis%29.jpg", label: "Black Rhino (hooked lip)" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/African-Bush-Elephant.jpg/320px-African-Bush-Elephant.jpg", label: "African Elephant" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/320px-Lion_waiting_in_Namibia.jpg", label: "Lion" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Giraffe_standing.jpg/320px-Giraffe_standing.jpg", label: "Giraffe" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/African_Buffalo_Mikumi.jpg/320px-African_Buffalo_Mikumi.jpg", label: "African Buffalo" }
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1127042/medium.jpg", label: "White Rhino (square lip)" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/6748163/medium.jpg", label: "Black Rhino (hooked lip)" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/973365/medium.jpg", label: "African Elephant" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1038527/medium.jpg", label: "Lion" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/6261082/medium.jpg", label: "Giraffe" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1053025/medium.jpg", label: "African Buffalo" }
   ],
   compareGrid: {
     heading: ["White Rhino", "Black Rhino"],
     imgs: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/White_Rhinoceros_%28Ceratotherium_simum%29.jpg/320px-White_Rhinoceros_%28Ceratotherium_simum%29.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Black_rhinoceros_%28Diceros_bicornis%29.jpg/320px-Black_rhinoceros_%28Diceros_bicornis%29.jpg"
+      "https://inaturalist-open-data.s3.amazonaws.com/photos/1127042/medium.jpg",
+      "https://inaturalist-open-data.s3.amazonaws.com/photos/6748163/medium.jpg"
     ],
     rows: [
       ["Wide square lip: grazer", "Hooked prehensile lip: browser"],
@@ -1596,6 +1619,14 @@ const lessons = [
   ],
   mattersText: "Reptiles are highly effective with guests who are nervous about them: the guide who can explain how a snake's heat-sensing pits work, why the puff adder does not flee, or how a crocodile can hold its breath for over an hour: the result is usually curiosity rather than fear. Reptile literacy makes you a better guide.",
   mistake: "Beginners sometimes identify snakes wrongly from a distance and speak with false confidence. If you are not certain, say you are not certain. Tell guests what you observe: thick body, triangular head, not moving. Then explain why that means you are treating it with maximum caution regardless of exact species.",
+  idGallery: [
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1127719/medium.jpg", label: "Puff Adder" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/5389396/medium.jpg", label: "Black Mamba" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/11049779/medium.jpg", label: "Mozambique Spitting Cobra" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1492862/medium.jpg", label: "Water Monitor" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1083219/medium.jpg", label: "Leopard Tortoise" },
+    { src: "https://inaturalist-open-data.s3.amazonaws.com/photos/1114030/medium.jpg", label: "Nile Crocodile" }
+  ],
   quiz: [
     {
       q: "A guest is spat at by a snake. Some liquid has hit near their left eye. What is the immediate correct action?",
@@ -1886,7 +1917,7 @@ function renderSheet() {
       <div class="sheet-cards">`;
     groups[g].forEach(l => {
       html += `<div class="sheet-card ${l.id === currentId ? 'active' : ''} ${completed.has(l.id) ? 'completed' : ''}"
-        style="--group-color:${color}" onclick="sheetNav(${l.id})" data-sheet-id="${l.id}">
+        onclick="sheetNav(${l.id})" data-sheet-id="${l.id}">
         <span class="sheet-card-num">${String(l.id).padStart(2,'0')}</span>
         <span class="sheet-card-title">${l.title}</span>
         <span class="sheet-card-done"></span>
@@ -2018,6 +2049,7 @@ function buildLessonHTML(l) {
       html += `<div class="question" id="q-${l.id}-${qi}">
         <div class="question-text">${qi + 1}. ${q.q}</div>
         <div class="options">`;
+      const ltrs = ['A','B','C','D'];
       q.options.forEach((opt, oi) => {
         let cls = 'option-btn';
         let dis = '';
@@ -2027,7 +2059,7 @@ function buildLessonHTML(l) {
           if (oi === q.correct) cls += ' correct';
           else if (oi === selected && oi !== q.correct) cls += ' wrong';
         }
-        html += `<button class="${cls}" ${dis}
+        html += `<button class="${cls}" data-letter="${ltrs[oi]}" ${dis}
           onclick="answerQuestion(${l.id}, ${qi}, ${oi}, ${q.correct})">${opt}</button>`;
       });
       html += `</div>
